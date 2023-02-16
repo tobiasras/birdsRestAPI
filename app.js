@@ -38,17 +38,11 @@ app.get("/birds", (req, res) => {
 
 app.get("/birds/:id", (req, res) => {
     const id = req.params.id;
-
     let response;
 
     birdStorage.birds.map(bird => {
-        //console.log(bird)
-
-        console.log("id " + id);
-        console.log("bird id " + bird.id);
-
-        if (bird.id === id){
-            console.log("true")
+        if (bird.id === +id){
+            response = bird
         }
     });
 
