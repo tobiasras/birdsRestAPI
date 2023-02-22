@@ -65,6 +65,11 @@ app.patch("/birds/:id", (rec, res) => {
             const bird = birdStorage[id];
             let keys = Object.keys(rec.query);
             let validQueries = keys.filter(key => (key in bird));
+
+            if (validQueries.length === 0){
+                res.status(400)
+                res.send("no valid params");
+            }
             validQueries.map((key) => {
                 const idQuery = rec.query[key];
                 if (idQuery) {
